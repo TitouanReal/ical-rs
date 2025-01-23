@@ -16,7 +16,7 @@ use std::io::BufRead;
 // Internal mods
 use crate::property::{Property, PropertyError, PropertyParser};
 
-#[derive(Debug, Error)]
+#[derive(Debug, Error, Clone, PartialEq, Eq)]
 pub enum ParserError {
     #[error("invalid component")]
     InvalidComponent,

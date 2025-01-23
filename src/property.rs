@@ -48,7 +48,7 @@ extern crate serde;
 // Internal mods
 use crate::line::{Line, LineReader};
 
-#[derive(Debug, Error)]
+#[derive(Debug, Error, Clone, PartialEq, Eq)]
 pub enum PropertyError {
     #[error("Line {}: Missing property name.", line)]
     MissingName { line: usize },
