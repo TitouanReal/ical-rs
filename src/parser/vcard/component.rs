@@ -45,3 +45,25 @@ impl Component for VcardContact {
         Err(ParserError::InvalidComponent)
     }
 }
+
+impl VcardContact {
+    pub fn remove_property(&mut self, property_name: &str) {
+        self.properties
+            .retain_mut(|property| property.name != property_name);
+    }
+
+    pub fn to_vcard(&self) -> String {
+        let mut vcard = String::from("BEGIN:VCARD\r\n");
+        for property in &self.properties {
+            vcard.push_str(&property.name);
+            vcard.push_str(":");
+            if let Some(value) = property.value.as_ref() {
+                vcard.push_str(&value);
+            }
+            vcard.push_str("\r\n");
+        }
+        vcard.push_str("END:VCARD");
+
+        vcard
+    }
+}
