@@ -82,7 +82,7 @@ impl fmt::Display for Line {
 
 /// A trait generic for implementing line reading use crate::by `PropertyParser`.
 pub trait LineRead {
-    /// Return the next line unwrapped and formated.
+    /// Return the next line unwrapped and formatted.
     fn next_line(&mut self) -> Option<Line>;
 }
 
